@@ -1,14 +1,16 @@
 package org.lessons.java.shop;
 
+import java.util.Random;
+
 public class Prodotto {
-	private int codice;
+	Random rdm = new Random();
+	private int codice = rdm.nextInt(100);
 	private String nome;
 	private String descrizione;
 	private double prezzo;
 	private double iva;
 	
-	public Prodotto(int codice, String nome, String descrizione, double prezzo, double iva){
-		setCod(codice);
+	public Prodotto(String nome, String descrizione, double prezzo, double iva){
 		setNam(nome);
 		setDes(descrizione);
 		setPr(prezzo);
@@ -16,9 +18,6 @@ public class Prodotto {
 	}
 	public int getCod() {
 		return codice;
-	}
-	public void setCod(int codice) {
-		this.codice = codice; 
 	}
 	public String getNam() {
 		return nome;
