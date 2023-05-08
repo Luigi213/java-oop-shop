@@ -45,7 +45,7 @@ public class Prodotto {
 		this.iva = iva;
 	}
 	public String padL() {
-		return String.format("%10s", codice).replace(' ', '0');
+		return String.format("%8s", codice).replace(' ', '0');
 	}
 	@Override
 	public String toString() {
