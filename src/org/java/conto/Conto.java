@@ -22,8 +22,8 @@ public class Conto {
 	}
 	@Override
 	public String toString() {
-		return "conto: " + conto 
-				+ " nome: " + nome
-				+ " saldo " + saldo;
+		return "conto: " + getConto()
+				+ " nome: " + getNome()
+				+ " saldo " + getSaldo();
 	}
 }
