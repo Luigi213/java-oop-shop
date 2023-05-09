@@ -4,23 +4,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Conto {
-	private int conto;
+	private String conto;
 	private String nome;
 	private double saldo;
 	
-	public Conto(String nome, String type) {
+	public Conto(String nome) {
 		Random rdm = new Random();
-		conto = rdm.nextInt(1000);
+		conto = "" + rdm.nextInt(1, 1001);
 		setNome(nome);
-		if(type.equals("versamento")) {
-			saldo = saldo + versamenti();
-		} else if( type.equals("prelievo")) {
-			saldo = prelievo();
-		}else {
-			System.out.println("Non hai scelto niente");;
-		}
 	}
-	public int getConto() {
+	public String getConto() {
 		return conto;
 	}
 	public String getNome() {
@@ -32,23 +25,20 @@ public class Conto {
 	public double getSaldo() {
 		return saldo;
 	}
-	public int versamenti() {
-		Scanner in = new Scanner(System.in);
-		System.out.println("Quanto vuoi versare?");
-		int soldi = in.nextInt();
-		in.close();
-		return soldi;
+	public String getFormSaldo() {
+		return String.format("%.2f", getSaldo());
 	}
-	public int prelievo() {
-		Scanner in = new Scanner(System.in);
-		System.out.println("Quanto vuoi prelevare?");
-		int soldi = in.nextInt();
-		if(soldi > saldo) {
-			in.close();
-			return soldi;
+	public void versamenti(int soldi) {
+		if(soldi < 0) return;
+		saldo += soldi;
+	}
+	public boolean prelievo(int soldi) {
+		if(soldi < 0) return false;
+		if(soldi <= saldo) {
+			saldo -= soldi;
+			return true;
 		}
-		in.close();
-		return soldi;
+		return false;
 	}
 	@Override
 	public String toString() {
